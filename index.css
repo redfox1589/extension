@@ -13,6 +13,7 @@ input {
     border: 2px solid rgb(53, 143, 169);
     margin-top: 5px;
     margin-bottom: 5px;
+    border-radius: 6px;
 }
 
 button {
@@ -23,6 +24,7 @@ button {
     border: 2px solid rgb(53, 143, 169);
     color:white;
     font-weight: bold;
+    border-radius: 6px;
 }
 
 #delete-btn {
