@@ -1,0 +1,1 @@
+command to open server: http-server -c-1
