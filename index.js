@@ -1,7 +1,9 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js"
 import { getDatabase, 
         ref,
-        push } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js"
+        push,
+        onValue,
+        remove } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js"
 
 const firebaseConfig = {
     databaseURL: "https://leads-tracker-app-3c71e-default-rtdb.europe-west1.firebasedatabase.app"
@@ -21,7 +23,18 @@ inputBtn.addEventListener("click", function(){
 })
 
 deleteBtn.addEventListener("dblclick", function(){
+    remove(referenceInDB)
+    ulEl.innerHTML = ""
+})
 
+onValue(referenceInDB, function(snapshot){
+    const snapshotDoesExist = snapshot.exists()
+    if(snapshotDoesExist){
+        const snapshotValues = snapshot.val()
+        const leads = Object.values(snapshotValues)
+        console.log(leads)
+        render(leads)
+    }
 })
 
 function render(leads){
